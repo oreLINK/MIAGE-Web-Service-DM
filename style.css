@@ -1,0 +1,66 @@
+body {
+    background-color: rgb(224, 224, 224);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.product {
+    width: fit-content;
+    margin: 200px auto auto auto;
+}
+
+.product-nom {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.product-brand {
+    font-size: 14px;
+    text-align: center;
+    color: grey;
+    margin-top: 5px;
+}
+
+.product-specs {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+.product-specs-spec:not(:first-child) {
+    margin-left: 40px;
+}
+
+.product-specs-spec-title {
+    text-transform: uppercase;
+    color: grey;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+}
+
+.product-specs-spec-text {
+    font-size: 30px;
+    text-align: center;
+}
+
+.product-price {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.product-price-number {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.product-buy {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.buy-link {
+    width: fit-content;
+    margin: 200px auto auto auto;
+}

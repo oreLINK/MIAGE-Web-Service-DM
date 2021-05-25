@@ -1,0 +1,108 @@
+<!DOCTYPE html> 
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" /> 
+        <script>
+
+        var jsonFile = "annuaire.json";
+
+        function readJSONFile(file, callback) {
+            var rawFile = new XMLHttpRequest();
+            rawFile.overrideMimeType("application/json");
+            rawFile.open("GET", file, true);
+            rawFile.onreadystatechange = function() {
+                if (rawFile.readyState === 4 && rawFile.status == "200") {
+                    callback(rawFile.responseText);
+                }
+            }
+            rawFile.send(null);
+        }
+
+        readJSONFile("annuaire.json", function(text){
+            var data = JSON.parse(text);
+            console.log(">>> JSON File (begin)");
+            data.forEach(function(object) {
+                console.log(object.nom);
+                console.log(object.prenom);
+                console.log(object.categoriePersonnel);
+                console.log(object.service);
+                console.log(object.anneeDebut);
+                console.log('----');
+            });
+            console.log(">>> JSON File (end)");
+        });
+
+        var xmlFile = "annuaire.xml";
+
+        getXMLDocObject(xmlFile, function(xmlDoc) {
+            var catalog = xmlDoc.getElementsByTagName('personnel')[0];
+            var books = catalog.getElementsByTagName('personne');
+            console.log(">>> XML File (begin)");
+            for (var i = 0; i < books.length; i++) {
+                for(var j = 0; j < 5; j++) {
+                    var childNodeName = books[i].children[j].nodeName;
+                    var childNodeValue = books[i].children[j].innerHTML;
+                    console.log(childNodeName + ': ' + childNodeValue);
+                }
+                console.log('----');
+            }
+            console.log(">>> XML File (end)");
+        });
+
+        function getXMLDocObject(xmlFile, callback) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if ((this.readyState === 4) && (this.status === 200)) {
+                    var xmlContent = this.responseText;
+                    var xmlDoc = parseXML(xmlContent);
+                    callback(xmlDoc);
+                }
+            };
+            xhttp.open('GET', xmlFile, true);
+            xhttp.send();
+        }
+
+        function parseXML(xmlContent) {
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(xmlContent, 'text/xml');
+            return xmlDoc;
+        }
+
+        </script>
+    </head>
+    <body>
+        <div class="product">
+            <div class="product-nom">
+                MacBook Pro 
+            </div>
+            <div class="product-brand">
+                par Apple
+            </div>
+            <div class="product-specs">
+                <div class="product-specs-spec">
+                    <div class="product-specs-spec-title">Processeur</div>
+                    <div class="product-specs-spec-text">Apple M2</div>
+                </div>
+                <div class="product-specs-spec">
+                    <div class="product-specs-spec-title">Stockage</div>
+                    <div class="product-specs-spec-text">512 Go</div>
+                </div>
+                <div class="product-specs-spec">
+                    <div class="product-specs-spec-title">Ecran</div>
+                    <div class="product-specs-spec-text">16 pouces</div>
+                </div>
+                <div class="product-specs-spec">
+                    <div class="product-specs-spec-title">Mémoire vive</div>
+                    <div class="product-specs-spec-text">16 Go</div>
+                </div>
+            </div>
+            <div class="product-price">
+                <span class="product-price-number">1549</span> €
+            </div>
+            <div class="product-buy">
+                <a href="achat.html">Acheter</a>
+            </div>
+        </div>
+    </body>
+</html>

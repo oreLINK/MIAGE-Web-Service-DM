@@ -1,0 +1,16 @@
+[
+    {
+        "nom": "Dupond",
+        "prenom": "René",
+        "categoriePersonnel": "Salarié",
+        "service": "Achats",
+        "anneeDebut": "2015"
+    },
+    {
+        "nom": "Martin",
+        "prenom": "Jacques",
+        "categoriePersonnel": "CDD",
+        "service": "Service Technique",
+        "anneeDebut": "2019"
+    }
+]
